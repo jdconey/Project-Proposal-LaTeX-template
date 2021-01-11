@@ -1,0 +1,217 @@
+\documentclass[11pt,a4paper,oneside]{article}
+%\usepackage[hmargin=2cm,vmargin=2cm]{geometry}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\title{ }
+\author{Jonathan Coney (201017749)\\ Supervisor: }
+\date{ }
+%Fancy Maths & Symbols
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{ gensymb }
+\usepackage{ textcomp }
+\usepackage{cancel}
+%\usepackage{ wasysym }
+
+%Python code formatting
+\usepackage{pythonhighlight}
+\usepackage{verbatim}
+\usepackage{pxfonts}
+\usepackage{float}
+\usepackage{color}
+ \definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegrey}{rgb}{0.97,0.97,0.97}
+\definecolor{codered}{rgb}{1,0,0}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+\usepackage{graphicx}
+\usepackage{xcolor}
+%\usepackage{minted}
+%\usepackage{xcolor}
+%\graphicspath{ {Images/} }
+
+
+%Titles and other Typesetting
+\setlength{\parindent}{0in}
+%\usepackage{framed} %for framing sections of text
+\usepackage{setspace} %for one half spacing etc
+
+\usepackage{fancyhdr} %for adding custom headers to each page
+\pagestyle{fancy}
+%\fancyhead{}                  % clear the default layout
+%\fancyhead[C]{Literature Review} % can be personalised
+%\fancyhead[L]{201017749}      % can be personalised
+%\fancyhead[R]{}        % can be personalised 
+\usepackage[UKenglish]{isodate}
+\renewcommand*\rmdefault{cmss}
+\usepackage{color, colortbl}
+\usepackage{parskip}
+%\usepackage{url}
+
+\usepackage[font=footnotesize]{caption}
+%\usepackage{helvet}
+%\renewcommand{\familydefault}{\sfdefault}
+
+%\usepackage{enumitem}
+\usepackage{enumerate}
+
+
+%References
+\usepackage{fancyref}
+\usepackage{hyperref}
+%\renewcommand{\refname}{Bibliography}
+\usepackage{xpatch}
+\usepackage[
+backend=biber,
+style=authoryear,
+sorting=nyvt, 
+isbn=false,
+doi=false,
+giveninits=true,
+maxcitenames=2,
+uniquename=false,
+uniquelist=false,
+maxbibnames=99,
+]{biblatex}
+\addbibresource{references.bib}
+\DeclareNameAlias{sortname}{family-given}
+
+\xpatchbibmacro{date+extradate}{%
+  \printtext[parens]%
+}{%
+  \setunit*{\addperiod\space}%
+  \printtext%
+}{}{} 
+
+\xpatchbibmacro{volume+number+eid}{%
+  \setunit*{\adddot}%
+}{%
+}{}{}
+
+\renewbibmacro*{journal+issuetitle}{%
+  \usebibmacro{journal}%
+  \setunit*{\addperiod\space}%
+  \iffieldundef{series}
+    {}
+    {\newunit
+     \printfield{series}%
+     \setunit{\addspace}}%
+  \usebibmacro{volume+number+eid}%
+  \setunit{\addspace}%
+  \usebibmacro{issue+date}%
+  \setunit{\addcolon\space}%
+  \usebibmacro{issue}%
+  \newunit}
+
+%%%separated bib here
+%\setlength\bibitemsep{\baselineskip}
+
+
+\renewcommand*{\nameyeardelim}{\addcomma\space}
+\DeclareFieldFormat[article]{title}{#1}
+\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+\renewbibmacro{in:}{}
+
+\DeclareFieldFormat[dataset]{title}{#1}
+\DeclareFieldFormat[dataset]{publisher}{\textit{#1}}
+
+\renewcommand*{\bibfont}{\small}
+%\setlength{\bibhang}{0pt}
+
+
+%Drawing
+%\usepackage{tikz}
+%\usetikzlibrary{shapes,snakes,graphs,graphs.standard}
+%\usetikzlibrary{calc}
+%\usetikzlibrary{fit}
+
+
+%\usepackage{datetime}
+
+%Tables
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage{tabulary}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{lscape}
+
+%\usepackage{tabularx}
+%\usepackage{caption}
+
+%Dunno what these do
+\makeatletter
+\makeatother
+
+
+%Custom Commands
+\newcommand{\NS}[1]{\mathbb{#1}} %blackbaord bold
+\newcommand{\bd}[1]{\textbf{#1}} %adding bold text on a whim
+\newcommand{\tx}[1]{\text{#1}} %add text in math environment
+\newcommand{\ic}[1]{\textquotedblleft{#1}"} %quotes, you say?
+\newcommand{\ty}[1]{\texttt{#1}} %typewriter
+\newcommand{\vsc}{\vspace{3mm}} %add vspace
+\newcommand{\vs}{\vspace{5mm}} %morevspace
+
+\pagenumbering{roman} %roman page nums in preamble
+
+
+\begin{document}
+\onehalfspacing
+
+%\detailtexcount{main}
+
+
+
+\begin{titlepage}
+\begin{center}
+\Huge
+        \textbf{Goldmine or Bust? Crowdsourced Meteorological Data for Atmospheric Science}
+ 
+
+ \vspace{0.5mm}
+ 
+        \LARGE
+        Project Proposal
+ 
+       \vspace{0.5cm}
+        \textbf{University of Leeds}
+    
+    \vspace{1cm}
+
+        \textbf{Jonathan Coney\\201017749}
+
+ \vspace{1.5cm}
+ 
+ \large
+ \textbf{Supervisors: Ben Pickering, Dr. David Dufton, Dr. Maryna Lukach }
+
+\vspace{1cm}
+ %\textbf{\today, \currenttime}
+ \textbf{January 2020}
+        \vspace{0.8cm}
+
+\end{center}
+\end{titlepage}
+\begin{abstract}
+%\thispagestyle{empty}
+
+
+\end{abstract}
+
+\newpage
+\setcounter{page}{2}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+
+\newpage
+\section{Introduction}
+\pagenumbering{arabic}
+
+\printbibliography
+\addcontentsline{toc}{section}{References}
+
+\end{document}
